@@ -80,7 +80,7 @@ jobs:
         Invoke-Build Pack
 
     - name: Upload artifact
-      uses: actions/upload-artifact@4
+      uses: actions/upload-artifact@v4
       with:
         name: dist
         path: pkg/
