@@ -356,7 +356,9 @@ function Restart-PodeInternalServer {
         }
 
         $PodeContext.Server.Configuration.Enabled = $PreviousConfig.Enabled
-        $PodeContext.Server.Configuration.ConfigFile = $PreviousConfig.ConfigFile
+        if ($null -ne $PreviousConfig.ConfigFile) {
+            $PodeContext.Server.Configuration.ConfigFile = $PreviousConfig.ConfigFile
+        }
 
         # restart the server
         $PodeContext.Metrics.Server.RestartCount++
