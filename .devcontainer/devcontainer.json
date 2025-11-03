@@ -1,10 +1,10 @@
 {
-  "name": "Codespace with PowerShell, Pester, Invoke-Build, and .NET 8",
+  "name": "Codespace with PowerShell, Pester, Invoke-Build, and .NET 9",
   "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
   "features": {
     "ghcr.io/devcontainers/features/powershell:1": {},
     "ghcr.io/devcontainers/features/dotnet:1": {
-      "version": "8.0"
+      "version": "9.0"
     }
   },
   "customizations": {
@@ -15,5 +15,5 @@
       ]
     }
   },
-  "postCreateCommand": "pwsh -Command 'Install-Module -Name InvokeBuild,Pester -Force -SkipPublisherCheck; sleep 5; Invoke-Build Build   '"
+  "postCreateCommand": "pwsh -Command 'sudo apt-get update; sudo apt-get remove cmdtest; sudo apt-get install yarnpkg; sudo ln -s /bin/yarnpkg /bin/yarn; Install-Module -Name InvokeBuild,Pester -Force -SkipPublisherCheck; sleep 5; Invoke-Build Build   '"
 }
