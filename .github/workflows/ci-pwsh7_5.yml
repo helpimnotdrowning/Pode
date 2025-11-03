@@ -22,6 +22,7 @@ on:
     - '.github/workflows/ci-pwsh7_5.yml'
     - 'Dockerfile'
     - '*.dockerfile'
+  workflow_dispatch:
 
 env:
   INVOKE_BUILD_VERSION: '5.12.2'
@@ -77,3 +78,9 @@ jobs:
       shell: pwsh
       run: |
         Invoke-Build Pack
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@4
+      with:
+        name: dist
+        path: pkg/
