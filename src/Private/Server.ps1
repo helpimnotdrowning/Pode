@@ -348,11 +348,15 @@ function Restart-PodeInternalServer {
         # recreate the session tokens
         Reset-PodeCancellationToken -Type Cancellation, Restart, Suspend, Resume, Terminate, Disable
 
+        $PreviousConfig = $PodeContext.Server.Configuration
         # if the configuration is enable reload it
         if ($PodeContext.Server.Configuration.Enabled) {
             # reload the configuration
             $PodeContext.Server.Configuration = Open-PodeConfiguration -Context $PodeContext -ConfigFile $PodeContext.Server.Configuration.ConfigFile
         }
+
+        $PodeContext.Server.Configuration.Enabled = $PreviousConfig.Enabled
+        $PodeContext.Server.Configuration.ConfigFile = $PreviousConfig.ConfigFile
 
         # restart the server
         $PodeContext.Metrics.Server.RestartCount++
