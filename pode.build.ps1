@@ -1237,7 +1237,7 @@ Add-BuildTask DockerPack PackageFolder, StampVersion, {
     Invoke-PodeBuildDockerBuild -Tag "$Version-alpine" -File './alpine.dockerfile'
     Invoke-PodeBuildDockerBuild -Tag 'latest-alpine' -File './alpine.dockerfile'
 
-    if (!(Test-PodeBuildIsGitHub)) {
+    if ([System.Runtime.InteropServices.Architecture]::OSArchitecture -eq 'Arm') {
         Invoke-PodeBuildDockerBuild -Tag "$Version-arm32" -File './arm32.dockerfile'
         Invoke-PodeBuildDockerBuild -Tag 'latest-arm32' -File './arm32.dockerfile'
     }
