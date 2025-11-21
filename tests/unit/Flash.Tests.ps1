@@ -21,7 +21,7 @@ Describe 'Add-PodeFlashMessage' {
 
     It 'Throws error for no message supplied' {
         $PodeContext = @{ 'Server' = @{ 'Sessions' = @{ 'Secret' = 'Key' } } }
-        { Add-PodeFlashMessage -Name 'name' -Message '' } | Should -Throw -ErrorId 'ParameterArgumentValidationErrorEmptyStringNotAllowed,Add-PodeFlashMessage'
+        { Add-PodeFlashMessage -Name 'name' -Message '' } | Should -Throw -ErrorId 'ParameterArgumentValidationError,Add-PodeFlashMessage'
     }
 
     It 'Adds a single key and value' {
