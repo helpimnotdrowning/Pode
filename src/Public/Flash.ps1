@@ -23,7 +23,7 @@ function Add-PodeFlashMessage {
         $Name,
 
         [Parameter(Mandatory = $true)]
-        [string]
+#        [string]
         $Message
     )
 
